@@ -225,6 +225,9 @@ sudo docker compose ps
 - [ ] Add network architecture diagrams and screenshots.
 - [ ] Develop a disaster recovery procedure.
 
+<img width="1375" height="826" alt="Screenshot 2026-11-19 at 11 48 40 AM" src="https://github.com/user-attachments/assets/fbed2219-e1fc-4585-aec3-2f19907c28f8" />
+
+
 ## Project Status
 
 **Current status:** Core infrastructure services deployed and verified.
