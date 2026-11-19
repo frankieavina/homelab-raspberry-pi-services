@@ -114,8 +114,17 @@ services:
 | Pi-hole DNS | DNS |
 | Uptime Kuma Web UI | HTTP |
 | CUPS Print Server | HTTP |
+| Raspberry Pi System Health | Push (CPU temperature, RAM, disk, and load) |
 
-### 3. CUPS – Print Server
+#### Host-Level System Health Reporting
+
+A Python health-check script runs through a systemd timer every five minutes and sends CPU temperature, RAM utilization, root filesystem utilization, and normalized CPU load to a Uptime Kuma Push monitor. Configurable thresholds cause the report to change from UP to DOWN when a warning condition is detected.
+
+**Documentation:** [Raspberry Pi System Health Monitoring](docs/raspberry-pi-system-health-monitoring.md)
+
+The Push URL is stored locally in a protected environment file and is not included in this repository.
+
+## 3. CUPS – Print Server
 
 CUPS (Common UNIX Printing System) provides network printing functionality.
 
@@ -189,7 +198,9 @@ sudo docker compose ps
 - Docker Compose deployment
 - Container persistence and restart policies
 - Uptime Kuma monitoring configuration
-- HTTP, DNS, and ICMP monitoring
+- HTTP, DNS, ICMP, and Push monitoring
+- Python-based Linux resource monitoring
+- systemd oneshot services and timers
 - CUPS print server administration
 - Service availability testing
 - Incident simulation and recovery
@@ -205,10 +216,10 @@ sudo docker compose ps
 
 ## Future Improvements
 
-- [ ] Configure automatic security updates.
-- [ ] Review Linux services and exposed network ports.
+- [x] Configure automatic security updates.
+- [x] Review Linux services and exposed network ports.
 - [ ] Implement regular backups of Pi-hole and Uptime Kuma configurations.
-- [ ] Add system resource monitoring.
+- [x] Add system resource monitoring.
 - [ ] Configure monitoring notifications if needed.
 - [ ] Document additional troubleshooting scenarios.
 - [ ] Add network architecture diagrams and screenshots.
