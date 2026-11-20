@@ -124,7 +124,16 @@ A Python health-check script runs through a systemd timer every five minutes and
 
 The Push URL is stored locally in a protected environment file and is not included in this repository.
 
-## 3. CUPS – Print Server
+
+## 3. Automated Backups & Disaster Recovery
+
+The Raspberry Pi uses Restic to create encrypted, incremental backups on an SMB share hosted by the Unraid NAS. A systemd automount keeps the NAS optional during Pi startup; the backup script checks NAS availability and skips cleanly when Unraid is offline.
+
+The weekly workflow refreshes a consistent Uptime Kuma SQLite backup, a Pi-hole Teleporter configuration export (with ZIP integrity validation), CUPS configuration, and selected service/system configuration files before creating a Restic snapshot. A systemd timer schedules the job every Sunday at 2:00 AM Pacific. The repository has been integrity-checked, and a restore test successfully recovered 45 files and directories.
+
+**Documentation:** [Raspberry Pi Automated Backups and Disaster Recovery](docs/raspberry-pi-automated-backups.md)
+
+## 4. CUPS – Print Server
 
 CUPS (Common UNIX Printing System) provides network printing functionality.
 
@@ -201,6 +210,12 @@ sudo docker compose ps
 - HTTP, DNS, ICMP, and Push monitoring
 - Python-based Linux resource monitoring
 - systemd oneshot services and timers
+- SMB/CIFS mounts and systemd automounts
+- Bash automation and error handling
+- Restic encrypted incremental backups
+- SQLite online database backups
+- Backup integrity verification and restore testing
+- Disaster recovery documentation
 - CUPS print server administration
 - Service availability testing
 - Incident simulation and recovery
@@ -218,12 +233,12 @@ sudo docker compose ps
 
 - [x] Configure automatic security updates.
 - [x] Review Linux services and exposed network ports.
-- [ ] Implement regular backups of Pi-hole and Uptime Kuma configurations.
+- [x] Implement regular backups of Pi-hole and Uptime Kuma configurations.
 - [x] Add system resource monitoring.
 - [ ] Configure monitoring notifications if needed.
 - [ ] Document additional troubleshooting scenarios.
 - [ ] Add network architecture diagrams and screenshots.
-- [ ] Develop a disaster recovery procedure.
+- [x] Document and test a disaster recovery procedure.
 
 <img width="1375" height="826" alt="Screenshot 2026-11-19 at 11 48 40 AM" src="https://github.com/user-attachments/assets/fbed2219-e1fc-4585-aec3-2f19907c28f8" />
 
