@@ -265,6 +265,9 @@ Initial implementation and manual test results (November 19, 2026):
 
 The manual weekly run used the first snapshot as its parent and added approximately 168.5 KiB of compressed repository data. Restic reported 27 changed files and one new file in the staging set.
 
+<img width="854" height="295" alt="Screenshot 2026-11-19 at 4 27 11 PM" src="https://github.com/user-attachments/assets/6bb9bfd3-da48-4b3a-a1fd-add058c79c8c" />
+
+
 ## Operational considerations
 
 - Unraid must be powered on and reachable at the scheduled time for a backup to occur.
