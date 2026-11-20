@@ -265,6 +265,8 @@ Check the service's most recent result:
 sudo systemctl status rpi-health-push.service --no-pager
 ```
 
+<img width="1375" height="826" alt="Screenshot 2026-11-19 at 11 48 40 AM" src="https://github.com/user-attachments/assets/fbed2219-e1fc-4585-aec3-2f19907c28f8" />
+
 ## Operational notes
 
 - The monitor heartbeat is 300 seconds, matching the five-minute reporting interval. If reports stop, Uptime Kuma can detect a missed heartbeat.
